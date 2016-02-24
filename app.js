@@ -1,4 +1,5 @@
 var app = require('express')(),
+	crypto = require('crypto'),
 	favicon = require('serve-favicon'),
 	bodyParser = require('body-parser'),
 	compression = require('compression'),
@@ -18,6 +19,10 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json({
 	limit: '50mb'
 }));
+app.get('/login/:user/:pwd', function(req, res) {
+	var hash = crypto.createHash('sha256').update(req.params.user.toLowerCase() + req.params.pwd.toLowerCase() + '*C&4GF087g*eGSD8FG802PG213-99AS-F0SAIGDI9h*gf)4{sd:,.VXVP2I023R').digest('hex');
+	res.send(hash);
+});
 app.use(serveStatic(__dirname + '/pub'));
 //app.use(favicon(__dirname + "/pub/img/favicon.ico"));
 app.listen(8088, function() {
