@@ -213,6 +213,7 @@ section {
 	text-transform: uppercase;
 }
 .text {
+	font-family: PTSansReg;
 	margin: 15px 0px 0px;
 }
 .footer {
@@ -227,23 +228,11 @@ section {
 	z-index: 0;
 	position: absolute;
 }
-#sec3, #sec4, #sec5, #sec6, #sec7, #sec3 .footer, #sec4 .footer, #sec5 .footer, #sec6 .footer, #sec7 .footer, #sec3 a, #sec4 a, #sec5 a, #sec6 a, #sec7 a {
+.our-works, #sec7, .our-works .footer, #sec7 .footer, .our-works a, #sec7 a {
 	color: #fff;
 }
-#sec3 a:hover, #sec4 a:hover, #sec5 a:hover, #sec6 a:hover, #sec7 a:hover {
+.our-works a:hover, #sec7 a:hover {
 	color: #e4002b;
-}
-#sec3 {
-	background: url(img/work-1.jpg)
-}
-#sec4 {
-	background: url(img/work-2.jpg)
-}
-#sec5 {
-	background: url(img/work-3.jpg)
-}
-#sec4 {
-	background: url(img/work-4.jpg)
 }
 #sec7 {
 	background: #000;
@@ -269,22 +258,25 @@ section {
 	color: #000;
 	transition: all 0.4s ease-in-out;
 }
-.sec3-video-off, .sec4-video-off, .sec5-video-off, .sec6-video-off {
-	position: absolute;
-	z-index: 1000;
-	display: none;
-	background: url('img/close-button.png') no-repeat;
+.video-off {
 	width: 40px;
 	height: 40px;
 	margin: 10px;
-}
-.sec3-video, .sec4-video, .sec5-video, .sec6-video {
-	display: none;
+	z-index: 1000;
 	position: absolute;
+	background: url('img/close-button.png') no-repeat;
+}
+.full-video {
 	top: 0;
 	left: 0;
 	z-index: 998;
+	position: absolute;
 }
-.sec3-video-off:hover, .sec4-video-off:hover, .sec5-video-off:hover, .sec6-video-off:hover {
+.video-off:hover {
 	background: url('img/close-button-hover.png') no-repeat;
+}
+
+.pre-h1 {
+	font-family: PTSansBold;
+	font-size: 2rem;
 }

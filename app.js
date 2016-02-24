@@ -9,7 +9,6 @@ process.on('uncaughtException', function(err) {
 	console.log((new Date()) + err + '\r\n');
 	console.log((new Date()) + 'Error stack: ' + err.stack + '\r\n');
 });
-app.use(busboy());
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({
