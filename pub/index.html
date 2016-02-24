@@ -1,0 +1,393 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+</head>
+<body>
+<article>
+  <span id="left"><img src="img/left.png"></span>
+  <span id="right"><img src="img/right.png"></span>
+  <section id="sec0">
+	  <div class="list">
+		<div class="header menu">
+			<div class="logo-header"><a href="index.html"><img src="img/logo-header.png"></a>
+			</div>
+			<div class="nav">
+			<ul>
+				<li class="active"><a href="index.html">О нас</a></li>
+				<li onclick="turnSection(3)">Наши работы</li>
+				<li onclick="turnSection(7)">Контакты</li>
+			</ul>
+			</div>
+		</div>
+		<div class="content">
+			<div class="logo-content"><img src="img/logo-content.png"></div>
+			<h1>Кто мы?</h1>
+			<div class="text">
+			<p>Мы создаем фильмы, которые захватывают с первого кадра.<br>Мы ценим каждую секунду, знаем, как привлечь<br>внимание, остановить взгляд, врезаться в память.<br> Мы любим выхватывать мгновения у жизни,<br>чтобы рассказать о мире вокруг.</p>
+			</div>
+		</div>
+		<div class="footer">
+		<a href="mailto:info@opictus.ru">info@opictus.ru</a><br>
+		<a href="tel:+79203004001">+7 920 300-40-01</a>
+		</div>
+	  </div>
+  </section>
+   
+  <section id="sec1">
+	<div class="list">
+		<div class="header menu">
+			<div class="logo-header"><a href="index.html"><img src="img/logo-header.png"></a>
+			</div>
+			<div class="nav">
+			<ul>
+				<li class="active"><a href="index.html">О нас</a></li>
+				<li onclick="turnSection(2)">Наши работы</li>
+				<li onclick="turnSection(6)">Контакты</li>
+			</ul>
+			</div>
+		</div>
+		<div class="content">
+			<h1>Что мы создаем?</h1>
+			<div class="text">
+				<div class="colomn">
+					<h2>Корпоративные фильмы</h2>
+					<p>Кино о бизнесе и для бизнеса.<br>Оно решает конкретные задачи -<br>рассказывает о компании, обучает,<br>налаживает контакты. Поэтому важно<br>не просто рассказать об успехах,<br>важно создать настроение. В основе<br>каждого фильма - авторский<br>сценарий.</p>
+				</div>
+				<div class="colomn">
+					<h2>Рекламные ролики</h2>
+					<p>Секунды, чтобы ненавязчиво<br>привлечь внимание, убедить,<br>создать положительный имидж.<br>Для достижения цели нужны<br>оригинальная концепция,<br>профессиональная сьемка,<br>монтаж и эффекты. Но главное -<br>рекламный ход, который мы<br>найдем специально для Вас.</p>
+				</div>
+				<div class="colomn">
+					<h2>Другие фильмы</h2>
+					<p>Мы творчески разрабатываем<br>действительность, а не просто<br>показываем жизнь, как есть.<br>Работаем в жанре документально-<br>художественное кино, создаем<br>телевизионные прокты, фильмы<br>о путешествиях, семейное кино.</p>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+		<a href="mailto:info@opictus.ru">info@opictus.ru</a><br>
+		<a href="tel:+79203004001">+7 920 300-40-01</a>
+		</div>
+	</div>
+  </section>
+  
+  <section id="sec2">
+	<div class="list">
+		<div class="header menu">
+			<div class="logo-header"><a href="index.html"><img src="img/logo-header.png"></a>
+			</div>
+			<div class="nav">
+			<ul>
+				<li class="active"><a href="index.html">О нас</a></li>
+				<li onclick="turnSection(1)">Наши работы</li>
+				<li onclick="turnSection(5)">Контакты</li>
+			</ul>
+			</div>
+		</div>
+		<div class="content">
+			<div class="logo-content"></div>
+			<h1>Как мы работаем?</h1>
+			<div class="text">Мы стремимся передать свое видение мира, рассказать<br>истории интересных людей. Мы показываем красоту,<br>которая есть во всём. Нужно только посмотреть<br>с правильного ракурса.</div>
+			<div class="text">Мы создаем ваш мир в картинках.</div>
+		</div>
+		<div class="footer">
+		<a href="mailto:info@opictus.ru">info@opictus.ru</a><br>
+		<a href="tel:+79203004001">+7 920 300-40-01</a>
+		</div>
+	</div>
+  </section>
+  
+  <section id="sec3">
+	<iframe class="sec3-video" src="https://player.vimeo.com/video/151870669?title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+	<div class="sec3-video-off" onclick="document.querySelector('.sec3-video').style.display='none';document.querySelector('.sec3-video-off').style.display='none';"></div>
+	<video autoplay loop muted class="bgvideo" id="bgvideo">
+		<source src="video/work-1.webm" type="video/webm"></source>
+    </video>
+	  <div class="list">
+
+		<div class="header menu">
+			
+			<div class="logo-header"><a href="index.html"><img src="img/logo-white.png"></a>
+
+			</div>
+
+			<div class="nav">
+
+			<ul>
+
+				<li><a href="index.html">О нас</a></li>
+				<li class="active">Наши работы</li>
+				<li onclick="turnSection(4)">Контакты</li>
+
+			</ul>
+
+			</div>
+
+		</div>
+
+		<div class="content">
+
+			<h1>Презентационный фильм "Красная Пахра"</h1>
+
+			<div class="text">
+
+			<p>В презентационном фильме о курорте "Красная Пахра"<br>мы хотели передать основную идею:<br>курорт "Красная Пахра" - это то место,<br>где стоит остановиться и позволить себе отдохнуть!</p>
+			</div>
+			<div class="play"><a href="#" onclick="document.querySelector('.sec3-video').style.display='block'; document.querySelector('.sec3-video-off').style.display='block';"><p>Смотреть ролик</p></a></div>
+		</div>
+
+		<div class="footer">
+
+		<a href="mailto:info@opictus.ru">info@opictus.ru</a><br>
+
+		<a href="tel:+79203004001">+7 920 300-40-01</a>
+
+		</div>
+
+	  </div>
+
+  </section>
+  
+  
+  <section id="sec4">
+	<iframe class="sec4-video" src="https://player.vimeo.com/video/151873562?title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+	<div class="sec4-video-off" onclick="document.querySelector('.sec4-video').style.display='none';document.querySelector('.sec4-video-off').style.display='none';"></div>
+	<video autoplay loop muted class="bgvideo" id="bgvideo">
+		<source src="video/work-2.webm" type="video/webm"></source>
+    </video>
+	  <div class="list">
+
+		<div class="header menu">
+
+			<div class="logo-header"><a href="index.html"><img src="img/logo-white.png"></a>
+
+			</div>
+
+			<div class="nav">
+
+			<ul>
+
+				<li><a href="index.html">О нас</a></li>
+				<li onclick="turnSection(-1)" class="active">Наши работы</li>
+				<li onclick="turnSection(3)">Контакты</li>
+
+			</ul>
+
+			</div>
+
+		</div>
+
+		<div class="content">
+
+			<h1>Имиджевый ролик "Мелагро"</h1>
+
+			<div class="text">
+
+			<p>Имиджевый ролик для  крупнейшего  производителя<br>картофеля во Владимирской области - компании "Мелагро"</p>
+			</div>
+			<div class="play"><a href="#" onclick="document.querySelector('.sec4-video').style.display='block'; document.querySelector('.sec4-video-off').style.display='block';"><p>Смотреть ролик</p></a></div>
+		</div>
+
+		<div class="footer">
+
+		<a href="mailto:info@opictus.ru">info@opictus.ru</a><br>
+
+		<a href="tel:+79203004001">+7 920 300-40-01</a>
+
+		</div>
+
+	  </div>
+
+  </section>
+  
+  <section id="sec5">
+	<iframe class="sec5-video" src="https://player.vimeo.com/video/151875705?title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+	<div class="sec5-video-off" onclick="document.querySelector('.sec5-video').style.display='none';document.querySelector('.sec5-video-off').style.display='none';"></div>
+	<video autoplay loop muted class="bgvideo" id="bgvideo">
+		<source src="video/work-3.webm" type="video/webm"></source>
+    </video>
+	  <div class="list">
+
+		<div class="header menu">
+
+			<div class="logo-header"><a href="index.html"><img src="img/logo-white.png"></a>
+
+			</div>
+
+			<div class="nav">
+
+			<ul>
+
+				<li><a href="index.html">О нас</a></li>
+				<li onclick="turnSection(-2)" class="active">Наши работы</li>
+				<li onclick="turnSection(2)">Контакты</li>
+
+			</ul>
+
+			</div>
+
+		</div>
+
+		<div class="content">
+
+			<h1>Презентационный фильм "Мелагро"</h1>
+
+			<div class="text">
+
+			<p>Мы сняли фильм о людях, которые любят свое дело.<br>Они начинают работу раньше восхода солнца.<br>Заканчивают при свете луны. Но помимо трудностей,<br>работа на земле дает такую энергию,<br>которую больше нигде не найти.<br>Эти люди знают цену настоящему и умеют его создавать. </p>
+			</div>
+			<div class="play"><a href="#" onclick="document.querySelector('.sec5-video').style.display='block'; document.querySelector('.sec5-video-off').style.display='block';"><p>Смотреть ролик</p></a></div>
+		</div>
+
+		<div class="footer">
+
+		<a href="mailto:info@opictus.ru">info@opictus.ru</a><br>
+
+		<a href="tel:+79203004001">+7 920 300-40-01</a>
+
+		</div>
+
+	  </div>
+
+  </section>
+  
+  <section id="sec6">
+	<iframe class="sec6-video" src="https://player.vimeo.com/video/151812202?title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+	<div class="sec6-video-off" onclick="document.querySelector('.sec6-video').style.display='none';document.querySelector('.sec6-video-off').style.display='none';"></div>
+	<video autoplay loop muted class="bgvideo" id="bgvideo">
+		<source src="video/work-4.webm" type="video/webm"></source>
+    </video>
+	  <div class="list">
+
+		<div class="header menu">
+
+			<div class="logo-header"><a href="index.html"><img src="img/logo-white.png"></a>
+
+			</div>
+
+			<div class="nav">
+
+			<ul>
+
+				<li><a href="index.html">О нас</a></li>
+				<li onclick="turnSection(-3)" class="active">Наши работы</li>
+				<li onclick="turnSection(1)">Контакты</li>
+
+			</ul>
+
+			</div>
+
+		</div>
+
+		<div class="content">
+
+			<h1>"Вознесенская слобода".<br> Ваша история начинается здесь</h1>
+
+			<div class="text">
+
+			<p>Атмосфера "Вознесенской слободы"  вдохновляет на то,<br>чтобы здесь начинались самые<br>необыкновенные и  трогательные истории.</p>
+			</div>
+			<div class="play"><a href="#" onclick="document.querySelector('.sec6-video').style.display='block'; document.querySelector('.sec6-video-off').style.display='block';"><p>Смотреть ролик</p></a></div>
+		</div>
+
+		<div class="footer">
+
+		<a href="mailto:info@opictus.ru">info@opictus.ru</a><br>
+
+		<a href="tel:+79203004001">+7 920 300-40-01</a>
+
+		</div>
+
+	  </div>
+
+  </section>
+  
+  <section id="sec7" name="contact">
+	
+	  <div class="list">
+
+		<div class="header menu">
+
+			<div class="logo-header"><a href="index.html"><img src="img/logo-white.png"></a>
+
+			</div>
+
+			<div class="nav">
+
+			<ul>
+
+				<li><a href="index.html">О нас</a></li>
+				<li onclick="turnSection(-4)">Наши работы</li>
+				<li class="active">Контакты</li>
+
+			</ul>
+
+			</div>
+
+		</div>
+
+		<div class="content">
+
+			<h1>Как с нами связаться</h1>
+
+			<div class="text">
+
+			<a href="mailto:info@opictus.ru">info@opictus.ru</a><br>
+			<a href="tel:+79203004001">+7 920 300-40-01</a>
+
+			</div>
+		</div>
+
+		<div class="footer">
+
+		<a href="mailto:info@opictus.ru">info@opictus.ru</a><br>
+
+		<a href="tel:+79203004001">+7 920 300-40-01</a>
+
+		</div>
+
+	  </div>
+
+  </section>
+  
+  
+</article>
+<script>
+(function(w) {
+  var currentSection = 0;
+
+  $('#left').hide();
+  $('#right').on('click', function() {
+    w.turnSection(1);
+  });
+  $('#left').on('click', function() {
+    w.turnSection(-1);
+  });
+
+  w.turnSection = function (dir) {
+	currentSection += dir;
+	if (currentSection === 0) {
+		$('#left').hide();
+	} else {
+		$('#left').show();
+	}
+	if (currentSection === $('section').length - 1) {
+		$('#right').hide();
+	} else {
+		$('#right').show();
+	}
+	currentSection < 3? ($('#left>img').attr('src','img/left.png'), $('#right>img').attr('src','img/right.png')):
+						($('#left>img').attr('src','img/left-white.png'), $('#right>img').attr('src','img/right-white.png'));
+    $('#sec0').css('margin-left', '-' + currentSection + '00%');
+    $('article').css('background-position', (100 / ($('section').length/4)) * currentSection + '% 0');
+  }
+})(window);
+
+
+</script>
+</body>
+</html>

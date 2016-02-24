@@ -1,0 +1,29 @@
+{
+  "name": "designers",
+  "version": "1.0.0",
+  "description": "site for designers",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m0sk1t/Designers.git"
+  },
+  "author": "m0sk1t",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/m0sk1t/Designers/issues"
+  },
+  "homepage": "https://github.com/m0sk1t/Designers#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "compression": "^1.6.1",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.4",
+    "mongodb": "^2.1.7",
+    "mongoose": "^4.4.4",
+    "serve-favicon": "^2.3.0",
+    "serve-static": "^1.10.2"
+  }
+}
