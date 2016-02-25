@@ -2,18 +2,25 @@
 	var app = angular.module('designers', []);
 	app.controller('MainCtrl', function($sce, $scope, Video) {
 		$scope.video = Video.get();
-		$scope.totalSections = 4 + $scope.video.length;
+		$scope.totalSections = 3 + $scope.video.length;
 		$scope.currentSection = 0;
+		$scope.keyTurn = function($event){
+			var keys = {
+				left: 37,
+				right: 39,
+			};
+			if (!$event) {return;}
+			$event.keyCode === keys.left && $scope.turnSection(-1);
+			$event.keyCode === keys.right && $scope.turnSection(1);
+		};
 		$scope.includeVimeo = function(id) {
 			return $sce.trustAsResourceUrl("https://player.vimeo.com/video/" + id + "?title=0&byline=0&portrait=0");
 		};
-		$scope.htmlize = function(txt) {
-			return $sce.trustAsHtml(txt);
-		}
 		$scope.turnSection = function(dir) {
-			if (dir > 1) {
+			if (dir > 1 || dir === 0) {
 				$scope.currentSection = dir;
 			} else {
+				if ((dir === -1 && $scope.currentSection === 0) || (dir === 1 && $scope.currentSection === $scope.totalSections)) { return; }
 				$scope.currentSection += dir;
 			}
 		};

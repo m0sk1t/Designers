@@ -9,11 +9,12 @@
 html {
 	height: 100%;
 }
-body {
+body, article, section {
 	margin: 0;
 	padding: 0;
 	height: 100%;
-	overflow-y: hidden;
+	width: 100%;
+	overflow: hidden;
 	font-family: PTSansReg;
 }
 a {
@@ -23,9 +24,6 @@ a {
 @media screen and (min-width:1920px) {
 	article {
 		background: url('img/fon-1920.jpg');
-	}
-	section {
-		margin: -8px 0 0 -5px;
 	}
 	body, .colomn h2 {
 		font-size: 18px;
@@ -41,9 +39,6 @@ a {
 	article {
 		background: url('img/fon-1920.jpg');
 	}
-	section {
-		margin: -8px 0 0 -5px;
-	}
 	body, .colomn h2 {
 		font-size: 18px;
 	}
@@ -57,9 +52,6 @@ a {
 @media screen and (max-width:1600px) {
 	article {
 		background: url('img/fon-1600.jpg');
-	}
-	section {
-		margin: -8px 0 0 -5px;
 	}
 	body, .colomn h2 {
 		font-size: 18px;
@@ -75,9 +67,6 @@ a {
 	article {
 		background: url('img/fon-1280.jpg');
 	}
-	section {
-		margin: -8px 0 0 -4px;
-	}
 	body, .colomn h2 {
 		font-size: 16px;
 	}
@@ -92,9 +81,6 @@ a {
 	article {
 		background: url('img/fon-980.jpg');
 	}
-	section {
-		margin: -8px 0 0 -4px;
-	}
 	body, .colomn h2 {
 		font-size: 14px;
 	}
@@ -106,10 +92,11 @@ a {
 	}
 }
 article {
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	white-space: nowrap;
+	display: flex;
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -webkit-flex;     /* NEW - Chrome */
 	transition: background-position .7s ease 0s;
 	-webkit-transition: background-position .7s ease 0s;
 	-moz-transition: background-position .7s ease 0s;
@@ -117,11 +104,7 @@ article {
 	background-size: cover;
 }
 section {
-	padding: 0;
 	color: #000;
-	width: 100%;
-	height: 100%;
-	position: relative;
 	display: inline-table;
 	transition: margin-left .7s ease 0s;
 	-webkit-transition: margin-left .7s ease 0s;
