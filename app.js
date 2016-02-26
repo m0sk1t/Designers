@@ -45,7 +45,8 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json({
 	limit: '5kb'
 }));
-app.get('/login', function(req, res) {
+
+app.post('/login', function(req, res) {
 	var hash = crypto.createHash('sha256').update(req.body.login.toLowerCase() + req.body.password.toLowerCase() + '*C&4GF087g*eGSD8FG802PG213-99AS-F0SAIGDI9h*gf)4{sd:,.VXVP2I023R').digest('hex');
 	if (adminid === hash) {
 		res.json({
@@ -119,9 +120,15 @@ app.post('/bgvideo/:_id', upload.single('bgvideo'), function(req, res) {
 });
 
 app.route('/video/:_id').get(function(req, res) {
-	Video.findById(req.params._id, function(err, el) {
-		(!err && el) ? res.json(el) : res.status(500).json(err);
-	});
+	if (req.params._id === 'all') {
+		Video.find({}, function(err, el) {
+			(!err && el) ? res.json(el) : res.status(500).json(err);
+		});
+	} else {
+		Video.findById(req.params._id, function(err, el) {
+			(!err && el) ? res.json(el) : res.status(500).json(err);
+		});
+	}
 }).post(function(req, res) {
 	if (adminid === req.body.hash) {
 		delete req.body.hash;

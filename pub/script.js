@@ -8,7 +8,7 @@
 		}).when('/admin', {
 			templateUrl: 'tpl/admin.tpl',
 			controller: 'AdminCtrl'
-		}).when('/video/:id', {
+		}).when('/video/:_id', {
 			templateUrl: 'tpl/video.tpl',
 			controller: 'VideoCtrl'
 		}).when('/videos', {
@@ -22,8 +22,8 @@
 			controller: 'MainCtrl'
 		});
 	}).controller('MainCtrl', function($sce, $scope, Video) {
-		$scope.video = Video.get();
-		$scope.totalSections = 3 + $scope.video.length;
+		$scope.video = [];
+		$scope.totalSections = 0;
 		$scope.currentSection = 0;
 		$scope.keyTurn = function($event) {
 			var keys = {
@@ -49,12 +49,12 @@
 				$scope.currentSection += dir;
 			}
 		};
-		/*		Video.get().then(function(res) {
+		Video.get().then(function(res) {
 			$scope.video = res.data;
+			$scope.totalSections = 3 + $scope.video.length;
 		}, function(res) {
 			console.error(res.data);
 		});
-*/
 	}).controller('AdminCtrl', function($http, $scope, Video) {
 		$scope.credentials = {
 			login: '',
@@ -70,58 +70,26 @@
 			});
 		};
 	}).controller('VideoCtrl', function($scope, $routeParams, Video) {
-		//		$scope.loading = true;
-		$scope.video = Video.get($routeParams.id)[0];
+		$scope.video = [];
+		Video.get($routeParams._id).then(function(res) {
+			$scope.video = res.data;
+		}, function(res) {
+			console.error(res.data);
+		});
 	}).controller('VideosCtrl', function($scope, Video) {
-		$scope.videos = Video.get();
+		$scope.videos = [];
+		Video.get().then(function(res) {
+			$scope.video = res.data;
+		}, function(res) {
+			console.error(res.data);
+		});
 	}).controller('ContactsCtrl', function($scope, Video) {
 		var a = {};
 	}).factory('Video', function($http) {
 		return {
 			get: function(id) {
-				var arr = [{
-					_id: 1,
-					bgimage: 'work-1.jpg',
-					bgvideo: 'work-1.webm',
-					fullvideo: '151870669',
-					headertext: 'Презентационный фильм "Красная Пахра"',
-					descriptiontext: '\r\nВ презентационном фильме о курорте "Красная Пахра"\r\nмы хотели передать основную идею:\r\nкурорт "Красная Пахра" - это то место,\r\nгде стоит остановиться и позволить себе отдохнуть!'
-				}, {
-					_id: 2,
-					bgimage: 'work-2.jpg',
-					bgvideo: 'work-2.webm',
-					fullvideo: '151873562',
-					headertext: 'Имиджевый ролик "Мелагро"',
-					descriptiontext: '\r\nИмиджевый ролик для  крупнейшего  производителя\r\nкартофеля во Владимирской области - компании "Мелагро"'
-				}, {
-					_id: 3,
-					bgimage: 'work-3.jpg',
-					bgvideo: 'work-3.webm',
-					fullvideo: '151875705',
-					headertext: 'Презентационный фильм "Мелагро"',
-					descriptiontext: '\r\nМы сняли фильм о людях, которые любят свое дело.\r\nОни начинают работу раньше восхода солнца.\r\nЗаканчивают при свете луны. Но помимо трудностей,\r\nработа на земле дает такую энергию,\r\nкоторую больше нигде не найти.\r\nЭти люди знают цену настоящему и умеют его создавать. '
-				}, {
-					_id: 4,
-					bgimage: 'work-4.jpg',
-					bgvideo: 'work-4.webm',
-					fullvideo: '151812202',
-					headertext: '"Вознесенская слобода".\r\n Ваша история начинается здесь',
-					descriptiontext: '\r\nАтмосфера "Вознесенской слободы"  вдохновляет на то,\r\nчтобы здесь начинались самые\r\nнеобыкновенные и  трогательные истории.'
-				}];
-				if (id) {
-					return arr.filter(function(el) {
-						return +id === +el._id;
-					});
-				} else {
-					return arr;
-				}
+				return $http.get('/video/' + (id? id: 'all'));
 			}
 		}
-		/*		return {
-			get: function() {
-				return $http.get('/video');
-			}
-		}
-*/
 	});
 })();

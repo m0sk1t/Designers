@@ -1,4 +1,4 @@
-<section class="admin-panel">
+<section class="admin-panel" ng-style="{'background-image': 'url(img/' + video.bgimage + ')'}">
 <h5>Редактирование видео '{{video.headertext}}'</h5>
 <div>
     <form ng-submit="save();">
@@ -9,7 +9,7 @@
         </div>
         <div>Описание</div>
         <textarea class="admin-text" ng-model="video.descriptiontext" rows="10"></textarea>
-        <a class="admin-button" ng-click="save();">Save</a>
+        <a class="admin-button-new" ng-click="save();">Save</a>
     </form>
 </div>
 
