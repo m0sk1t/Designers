@@ -3,10 +3,12 @@
 <div>
     <form ng-submit="save();">
         <a class="admin-button-delete" ng-click="delete();">Delete</a>
-        <div>
-            <div>Заголовок: </div>
-            <input class="admin-text" ng-model="video.headertext" type="text">
-        </div>
+        <div>Фоновое изображение</div>
+        <input class="admin-text" type="file" name="file" ng-change="">
+        <div>Фоновое видео</div>
+        <input class="admin-text" type="file">
+        <div>Заголовок: </div>
+        <input class="admin-text" ng-model="video.headertext" type="text">
         <div>Описание</div>
         <textarea class="admin-text" ng-model="video.descriptiontext" rows="10"></textarea>
         <a class="admin-button-new" ng-click="save();">Save</a>
