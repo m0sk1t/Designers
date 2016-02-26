@@ -265,16 +265,23 @@ section {
 }
 .admin-panel {
 	width: 100%;
+	color: #eee;
+	background-color: #777;
 	text-align: center;
 }
-.admin-button, .admin-button-new, .admin-button-delete, .admin-text {
+.admin-button, .admin-button-new, .admin-button-delete {
 	width: 51%;
 	height: 5%;
+	color: #eee;
 	margin-bottom: 1%;
 	display: inline-block;
 }
+.video-preview, .admin-text {
+	width: 51%;
+	display: inline-block;
+}
 .admin-button {
-	background-color: #3ee;
+	background-color: #3aa;
 }
 .admin-button-new {
 	background-color: #3a3;

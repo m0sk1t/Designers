@@ -58,17 +58,17 @@ app.post('/login', function(req, res) {
 	}
 });
 
-app.post('/bgpic/:_id', upload.single('bgimage'), function(req, res) {
-	if (adminid === req.body.hash) {
+app.post('/bgpic/:adminid/:_id', upload.single('bgimage'), function(req, res) {
+	if (adminid === req.params.adminid) {
 		im.resize({
-			srcData: fs.readFileSync(req.file.path, 'binary'),
+			srcData: fs.readFileSync(req.files.file.path, 'binary'),
 			width: 1920,
 			format: 'jpg'
 		}, function(err, stdout, stderr) {
-			fs.writeFile(req.file.path, stdout, 'binary', function(err) {
+			fs.writeFile(req.files.file.path, stdout, 'binary', function(err) {
 				if (err) return console.error(err);
 				var hash = crypto.createHash('md5'),
-					rdd = fs.createReadStream(req.file.path);
+					rdd = fs.createReadStream(req.files.file.path);
 				rdd.on('data', function(d) {
 					hash.update(d);
 				});
@@ -77,8 +77,8 @@ app.post('/bgpic/:_id', upload.single('bgimage'), function(req, res) {
 					rdd.close();
 					newfilename = hash.digest('hex') + '.jpg';
 					console.log('Uploaded', newfilename);
-					fs.rename(req.file.path, __dirname + '/pub/img/' + newfilename, function() {
-						Video.findByIdAndUpdate(req.body._id, {
+					fs.rename(req.files.file.path, __dirname + '/pub/img/' + newfilename, function() {
+						Video.findByIdAndUpdate(req.params._id, {
 							bgimage: newfilename
 						}, function(err, el) {
 							if (err) return console.error(err);
@@ -93,10 +93,10 @@ app.post('/bgpic/:_id', upload.single('bgimage'), function(req, res) {
 	}
 });
 
-app.post('/bgvideo/:_id', upload.single('bgvideo'), function(req, res) {
-	if (adminid === req.body.hash) {
+app.post('/bgvideo/:adminid/:_id', upload.single('bgvideo'), function(req, res) {
+	if (adminid === req.params.adminid) {
 		var hash = crypto.createHash('md5'),
-			rdd = fs.createReadStream(req.file.path);
+			rdd = fs.createReadStream(req.files.file.path);
 		rdd.on('data', function(d) {
 			hash.update(d);
 		});
@@ -105,9 +105,9 @@ app.post('/bgvideo/:_id', upload.single('bgvideo'), function(req, res) {
 			rdd.close();
 			newfilename = hash.digest('hex') + '.webm';
 			console.log('Uploaded', newfilename);
-			fs.rename(req.file.path, __dirname + '/pub/video/' + newfilename, function() {
-				Video.findByIdAndUpdate(req.body._id, {
-					bgimage: newfilename
+			fs.rename(req.files.file.path, __dirname + '/pub/media/' + newfilename, function() {
+				Video.findByIdAndUpdate(req.params._id, {
+					bgvideo: newfilename
 				}, function(err, el) {
 					if (err) return console.error(err);
 					res.send('OK!');
@@ -131,8 +131,7 @@ app.route('/video/:_id').get(function(req, res) {
 	}
 }).post(function(req, res) {
 	if (adminid === req.body.hash) {
-		delete req.body.hash;
-		Video.create(req.body, function(err, el) {
+		Video.create({}, function(err, el) {
 			(!err && el) ? res.json(el) : res.status(500).json(err);
 		})
 	} else {
@@ -140,8 +139,10 @@ app.route('/video/:_id').get(function(req, res) {
 	}
 }).put(function(req, res) {
 	if (adminid === req.body.hash) {
+		var _id = req.body._id;
+		delete req.body._id;
 		delete req.body.hash;
-		Video.findByIdAndUpdate(req.body._id, function(err, el) {
+		Video.findByIdAndUpdate(_id, req.body, function(err, el) {
 			(!err && el) ? res.json(el) : res.status(500).json(err);
 		})
 	} else {

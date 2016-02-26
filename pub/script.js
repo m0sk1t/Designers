@@ -1,7 +1,6 @@
 (function() {
-	var app = angular.module('Designers', ['ngRoute']);
+	var app = angular.module('Designers', ['ngRoute', 'angularFileUpload']);
 	app.config(function($routeProvider, $locationProvider) {
-		//		$locationProvider.hashPrefix('!');
 		$routeProvider.when('/', {
 			templateUrl: 'tpl/main.tpl',
 			controller: 'MainCtrl'
@@ -69,15 +68,69 @@
 				alert('Wrong credentials!');
 			});
 		};
-	}).controller('VideoCtrl', function($scope, $routeParams, Video) {
-		$scope.video = [];
-		Video.get($routeParams._id).then(function(res) {
-			$scope.video = res.data;
-		}, function(res) {
-			console.error(res.data);
+	}).controller('VideoCtrl', function($scope, $location, $routeParams, Video, FileUploader) {
+		$scope.user = localStorage.user ? JSON.parse(localStorage.user) : {};
+		!$scope.user && $location.path('/');
+		$scope.loading = false;
+		$scope.video = {};
+		$scope.load = function() {
+			Video.get($routeParams._id).then(function(res) {
+				$scope.video = res.data;
+			}, function(res) {
+				console.error(res.data);
+			});
+		};
+		$scope.picUpload = new FileUploader({
+			removeAfterUpload: true,
+			url: "/bgpic/" + $scope.user.hash + '/' + $routeParams._id
 		});
-	}).controller('VideosCtrl', function($scope, Video) {
+		$scope.videoUpload = new FileUploader({
+			removeAfterUpload: true,
+			url: "/bgvideo/" + $scope.user.hash + '/' + $routeParams._id
+		});
+		$scope.save = function() {
+			$scope.video.hash = $scope.user.hash;
+			Video.save($routeParams._id, $scope.video).then(function(res) {
+				swal('OK!', 'Изменения сохранены!');
+				console.log(res.data);
+			}, function(res) {
+				console.error(res.data);
+			});
+		};
+		$scope.del = function() {
+			Video.del({
+				hash: $scope.user.hash,
+				_id: $routeParams._id
+			}).then(function(res) {
+				$location.path('/videos');
+			}, function(res) {
+				console.error(res.data);
+			});
+		};
+		$scope.picUpload.onCompleteItem = function(fileItem, response, status, headers) {
+			$scope.load();
+			$scope.loading = false;
+			swal('OK!', 'Фоновое изображение успешно загружено!');
+			console.log(fileItem, response, status, headers);
+		};
+		$scope.videoUpload.onCompleteItem = function(fileItem, response, status, headers) {
+			$scope.load();
+			$scope.loading = false;
+			swal('OK!', 'Фоновое видео успешно загружено!');
+			console.log(fileItem, response, status, headers);
+		};
+		$scope.load();
+	}).controller('VideosCtrl', function($scope, $location, Video) {
+		$scope.user = localStorage.user ? JSON.parse(localStorage.user) : {};
+		!$scope.user && $location.path('/');
 		$scope.videos = [];
+		$scope.create = function() {
+			Video.add($scope.user).then(function(res) {
+				$location.path('/video/' + res.data._id);
+			}, function(res) {
+				console.error(res.data);
+			});
+		};
 		Video.get().then(function(res) {
 			$scope.video = res.data;
 		}, function(res) {
@@ -88,8 +141,17 @@
 	}).factory('Video', function($http) {
 		return {
 			get: function(id) {
-				return $http.get('/video/' + (id? id: 'all'));
-			}
+				return $http.get('/video/' + (id ? id : 'all'));
+			},
+			add: function(data) {
+				return $http.post('/video/new', data);
+			},
+			save: function(id, data) {
+				return $http.put('/video/' + id, data);
+			},
+			del: function(data) {
+				return $http.delete('/video/' + data._id, data);
+			},
 		}
 	});
 })();
