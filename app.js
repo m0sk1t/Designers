@@ -78,11 +78,15 @@ app.post('/bgpic/:adminid/:_id', upload.single('bgimage'), function(req, res) {
 					newfilename = hash.digest('hex') + '.jpg';
 					console.log('Uploaded', newfilename);
 					fs.rename(req.files.file.path, __dirname + '/pub/img/' + newfilename, function() {
-						Video.findByIdAndUpdate(req.params._id, {
-							bgimage: newfilename
-						}, function(err, el) {
-							if (err) return console.error(err);
-							res.send('OK!');
+						Video.findById(req.params._id, function(err, el) {
+							fs.unlink(__dirname + '/pub/img/' + el.bgimage, function(){
+								Video.findByIdAndUpdate(req.params._id, {
+									bgimage: newfilename
+								}, function(err, el) {
+									if (err) return console.error(err);
+									res.send('OK!');
+								});
+							});
 						});
 					});
 				});
@@ -106,11 +110,15 @@ app.post('/bgvideo/:adminid/:_id', upload.single('bgvideo'), function(req, res) 
 			newfilename = hash.digest('hex') + '.webm';
 			console.log('Uploaded', newfilename);
 			fs.rename(req.files.file.path, __dirname + '/pub/media/' + newfilename, function() {
-				Video.findByIdAndUpdate(req.params._id, {
-					bgvideo: newfilename
-				}, function(err, el) {
-					if (err) return console.error(err);
-					res.send('OK!');
+				Video.findById(req.params._id, function(err, el) {
+					fs.unlink(__dirname + '/pub/media/' + el.bgvideo, function(){
+						Video.findByIdAndUpdate(req.params._id, {
+							bgvideo: newfilename
+						}, function(err, el) {
+							if (err) return console.error(err);
+							res.send('OK!');
+						});
+					});
 				});
 			});
 		});
@@ -133,7 +141,7 @@ app.route('/video/:_id').get(function(req, res) {
 	if (adminid === req.body.hash) {
 		Video.create({}, function(err, el) {
 			(!err && el) ? res.json(el) : res.status(500).json(err);
-		})
+		});
 	} else {
 		res.status(401).send('Wrong credentials!');
 	}
@@ -144,15 +152,19 @@ app.route('/video/:_id').get(function(req, res) {
 		delete req.body.hash;
 		Video.findByIdAndUpdate(_id, req.body, function(err, el) {
 			(!err && el) ? res.json(el) : res.status(500).json(err);
-		})
+		});
 	} else {
 		res.status(401).send('Wrong credentials!');
 	}
-}).delete(function(req, res) {
+}).patch(function(req, res) {
 	if (adminid === req.body.hash) {
 		Video.findByIdAndRemove(req.body._id, function(err, el) {
-			(!err && el) ? res.json(el) : res.status(500).json(err);
-		})
+			fs.unlink(__dirname + '/pub/img/' + el.bgimage, function(){
+				fs.unlink(__dirname + '/pub/media/' + el.bgvideo, function(){
+					(!err && el) ? res.json(el) : res.status(500).json(err);
+				});
+			});
+		});
 	} else {
 		res.status(401).send('Wrong credentials!');
 	}

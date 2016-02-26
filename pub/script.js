@@ -150,7 +150,7 @@
 				return $http.put('/video/' + id, data);
 			},
 			del: function(data) {
-				return $http.delete('/video/' + data._id, data);
+				return $http.patch('/video/' + data._id, data);
 			},
 		}
 	});
