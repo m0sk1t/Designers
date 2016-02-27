@@ -186,8 +186,8 @@ app.route('/video/:_id').get(function(req, res) {
 });
 
 app.use(serveStatic(__dirname + '/pub'));
-//app.use(favicon(__dirname + "/pub/img/favicon.ico"));
-app.listen(8088, function() {
+app.use(favicon(__dirname + "/pub/img/favicon.ico"));
+app.listen(80, function() {
 	console.log("Started");
 	mongoose.connect('mongodb://localhost:27017/designers');
 })
