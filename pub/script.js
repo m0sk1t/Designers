@@ -90,7 +90,7 @@
 		});
 		$scope.save = function() {
 			$scope.video.hash = $scope.user.hash;
-			Video.save($routeParams._id, $scope.video).then(function(res) {
+			Video.set($routeParams._id, $scope.video).then(function(res) {
 				swal('OK!', 'Изменения сохранены!');
 				console.log(res.data);
 			}, function(res) {
@@ -136,8 +136,26 @@
 		}, function(res) {
 			console.error(res.data);
 		});
-	}).controller('ContactsCtrl', function($scope, Video) {
-		var a = {};
+	}).controller('ContactsCtrl', function($scope, Contact) {
+		$scope.user = localStorage.user ? JSON.parse(localStorage.user) : {};
+		!$scope.user && $location.path('/');
+		$scope.contact = {};
+		$scope.load = function() {
+			Contact.get().then(function(res) {
+				$scope.contact = res.data[0];
+			}, function(res) {
+				console.error(res.data);
+			});
+		};
+		$scope.save = function() {
+			$scope.contact.hash = $scope.user.hash;
+			Contact.set($scope.contact).then(function(res) {
+				swal('OK!', 'Изменения сохранены!');
+			}, function(res) {
+				console.error(res.data);
+			});
+		};
+		$scope.load();
 	}).factory('Video', function($http) {
 		return {
 			get: function(id) {
@@ -146,12 +164,21 @@
 			add: function(data) {
 				return $http.post('/video/new', data);
 			},
-			save: function(id, data) {
+			set: function(id, data) {
 				return $http.put('/video/' + id, data);
 			},
 			del: function(data) {
 				return $http.patch('/video/' + data._id, data);
+			}
+		}
+	}).factory('Contact', function($http) {
+		return {
+			get: function() {
+				return $http.get('/contact');
 			},
+			set: function(data) {
+				return $http.put('/contact', data);
+			}
 		}
 	});
 })();

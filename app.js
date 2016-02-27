@@ -127,6 +127,21 @@ app.post('/bgvideo/:adminid/:_id', upload.single('bgvideo'), function(req, res) 
 	}
 });
 
+app.route('/contact').get(function(req, res) {
+	Info.find({}, function(err, el) {
+		(!err && el) ? res.json(el) : res.status(500).json(err);
+	});
+}).put(function(req, res) {
+	if (adminid === req.body.hash) {
+		delete req.body.hash;
+		Info.findOneAndUpdate({}, req.body, {upsert: true}, function(err, el) {
+			(!err && el) ? res.json(el) : res.status(500).json(err);
+		});
+	} else {
+		res.status(401).send('Wrong credentials!');
+	}
+});
+
 app.route('/video/:_id').get(function(req, res) {
 	if (req.params._id === 'all') {
 		Video.find({}, function(err, el) {
