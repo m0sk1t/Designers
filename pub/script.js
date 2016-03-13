@@ -20,18 +20,17 @@
 			redirectTo: '/',
 			controller: 'MainCtrl'
 		});
-	}).controller('MainCtrl', function($sce, $scope, Video) {
+	}).controller('MainCtrl', function($sce, $scope, Video, Contact) {
+		var keys = {
+			left: 37,
+			right: 39,
+		};
 		$scope.video = [];
+		$scope.contact = {};
 		$scope.totalSections = 0;
 		$scope.currentSection = 0;
 		$scope.keyTurn = function($event) {
-			var keys = {
-				left: 37,
-				right: 39,
-			};
-			if (!$event) {
-				return;
-			}
+			if (!$event) { return; }
 			$event.keyCode === keys.left && $scope.turnSection(-1);
 			$event.keyCode === keys.right && $scope.turnSection(1);
 		};
@@ -51,6 +50,11 @@
 		Video.get().then(function(res) {
 			$scope.video = res.data;
 			$scope.totalSections = 3 + $scope.video.length;
+		}, function(res) {
+			console.error(res.data);
+		});
+		Contact.get().then(function(res) {
+			$scope.contact = res.data[0];
 		}, function(res) {
 			console.error(res.data);
 		});

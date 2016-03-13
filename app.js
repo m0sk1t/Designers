@@ -129,7 +129,7 @@ app.post('/bgvideo/:adminid/:_id', upload.single('bgvideo'), function(req, res) 
 
 app.route('/contact').get(function(req, res) {
 	Info.find({}, function(err, el) {
-		(!err && el) ? res.json(el) : res.status(500).json(err);
+		(!err) ? res.json(el) : res.status(500).json(err);
 	});
 }).put(function(req, res) {
 	if (adminid === req.body.hash) {
@@ -187,7 +187,7 @@ app.route('/video/:_id').get(function(req, res) {
 
 app.use(serveStatic(__dirname + '/pub'));
 app.use(favicon(__dirname + "/pub/img/favicon.ico"));
-app.listen(80, function() {
+app.listen(8888, function() {
 	console.log("Started");
 	mongoose.connect('mongodb://localhost:27017/designers');
 })

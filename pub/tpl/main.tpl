@@ -29,8 +29,8 @@
 				</div>
 			</div>
 			<div class="footer">
-				<a href="mailto:info@opictus.ru">info@opictus.ru</a><br>
-				<a href="tel:+79203004001">+7 920 300-40-01</a>
+				<a ng-href="mailto:{{contact.mail}}">{{contact.mail}}</a><br>
+				<a ng-href="tel:{{contact.phone}}">{{contact.phone}}</a>
 			</div>
 		</div>
 	</section>
@@ -69,8 +69,8 @@
 				</div>
 			</div>
 			<div class="footer">
-				<a href="mailto:info@opictus.ru">info@opictus.ru</a><br>
-				<a href="tel:+79203004001">+7 920 300-40-01</a>
+				<a ng-href="mailto:{{contact.mail}}">{{contact.mail}}</a><br>
+				<a ng-href="tel:{{contact.phone}}">{{contact.phone}}</a>
 			</div>
 		</div>
 	</section>
@@ -98,8 +98,8 @@
 				<div class="text">Мы создаем ваш мир в картинках.</div>
 			</div>
 			<div class="footer">
-				<a href="mailto:info@opictus.ru">info@opictus.ru</a><br>
-				<a href="tel:+79203004001">+7 920 300-40-01</a>
+				<a ng-href="mailto:{{contact.mail}}">{{contact.mail}}</a><br>
+				<a ng-href="tel:{{contact.phone}}">{{contact.phone}}</a>
 			</div>
 		</div>
 	</section>
@@ -136,8 +136,8 @@
 			</div>
 		</div>
 		<div class="footer">
-			<a href="mailto:info@opictus.ru">info@opictus.ru</a><br>
-			<a href="tel:+79203004001">+7 920 300-40-01</a>
+				<a ng-href="mailto:{{contact.mail}}">{{contact.mail}}</a><br>
+				<a ng-href="tel:{{contact.phone}}">{{contact.phone}}</a>
 		</div>
 	</div>
 	</section>
@@ -160,13 +160,13 @@
 		<div class="content">
 			<h1>Как с нами связаться</h1>
 			<div class="text">
-				<a href="mailto:info@opictus.ru">info@opictus.ru</a><br>
-				<a href="tel:+79203004001">+7 920 300-40-01</a>
+				<a ng-href="mailto:{{contact.mail}}">{{contact.mail}}</a><br>
+				<a ng-href="tel:{{contact.phone}}">{{contact.phone}}</a>
 			</div>
 		</div>
 		<div class="footer">
-			<a href="mailto:info@opictus.ru">info@opictus.ru</a><br>
-			<a href="tel:+79203004001">+7 920 300-40-01</a>
+			<a ng-href="mailto:{{contact.mail}}">{{contact.mail}}</a><br>
+			<a ng-href="tel:{{contact.phone}}">{{contact.phone}}</a>
 		</div>
 	</div>
 	</section>
