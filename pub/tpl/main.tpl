@@ -104,7 +104,7 @@
 		</div>
 	</section>
 	<section class="our-works" ng-repeat="v in video track by $index" ng-style="{'background-image': 'url(img/' + v.bgimage + ')'}">
-		<iframe ng-init="v.display = false" ng-show="v.display" class="full-video" ng-src="{{includeVimeo(v.fullvideo)}}" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		<iframe ng-init="v.display = false" ng-if="v.display" class="full-video" ng-src="{{includeVimeo(v.fullvideo)}}" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 		<div class="video-off" ng-if="v.display" ng-click="v.display = false"></div>
 		<video autoplay loop muted class="bgvideo" ng-if="$index+3 === currentSection">
 			<source ng-src="{{'media/'+v.bgvideo}}" type="video/webm"></source>
