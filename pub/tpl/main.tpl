@@ -1,9 +1,9 @@
 <article tabindex="1" style="background-position: {{(100/totalSections) * currentSection + '% 0'}}">
 	<span id="left" ng-if="currentSection > 0" ng-click="turnSection(-1)">
-		<img ng-src="{{currentSection > 3? 'img/left.png': 'img/left-white.png'}}">
+		<img ng-src="{{currentSection<0? 'img/left.png': 'img/left-white.png'}}">
 	</span>
 	<span id="right" ng-if="currentSection < totalSections" ng-click="turnSection(1)">
-		<img ng-src="{{currentSection > 3? 'img/right.png': 'img/right-white.png'}}">
+		<img ng-src="{{currentSection<0? 'img/right.png': 'img/right-white.png'}}">
 	</span>
 	<section style="margin-left: {{'-' + currentSection + '00%'}}">
 		<div class="list">
@@ -130,9 +130,7 @@
 				{{v.descriptiontext}}
 			</pre>
 			<div class="play">
-				<a href="#" ng-click="v.display = true">
-					<p>Смотреть ролик</p>
-				</a>
+				<p ng-click="v.display = true">Смотреть ролик</p>
 			</div>
 		</div>
 		<div class="footer">
