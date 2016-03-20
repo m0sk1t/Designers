@@ -19,7 +19,7 @@ body, article, section {
 }
 a {
 	text-decoration: none;
-	color: #000;
+	color: #fff;
 }
 @media screen and (min-width:1920px) {
 	article {
@@ -101,7 +101,7 @@ article {
 	background-size: cover;
 }
 section {
-	color: #000;
+	color: #fff;
 	position: relative;
 	display: inline-table;
 	transition: margin-left .7s ease 0s;

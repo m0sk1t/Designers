@@ -133,8 +133,12 @@ app.route('/contact').get(function(req, res) {
 	});
 }).put(function(req, res) {
 	if (adminid === req.body.hash) {
+		var id = req.body._id;
+		console.log(req.body);
+		delete req.body.__v;
+		delete req.body._id;
 		delete req.body.hash;
-		Info.findOneAndUpdate({}, req.body, {upsert: true}, function(err, el) {
+		Info.findByIdAndUpdate(id, {'$set': req.body}, {upsert: true}, function(err, el) {
 			(!err && el) ? res.json(el) : res.status(500).json(err);
 		});
 	} else {

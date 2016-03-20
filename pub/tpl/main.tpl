@@ -1,16 +1,16 @@
 <article tabindex="1" style="background-position: {{(100/totalSections) * currentSection + '% 0'}}">
 	<span id="left" ng-if="currentSection > 0" ng-click="turnSection(-1)">
-		<img ng-src="{{currentSection < 3? 'img/left.png': 'img/left-white.png'}}">
+		<img ng-src="{{currentSection > 3? 'img/left.png': 'img/left-white.png'}}">
 	</span>
 	<span id="right" ng-if="currentSection < totalSections" ng-click="turnSection(1)">
-		<img ng-src="{{currentSection < 3? 'img/right.png': 'img/right-white.png'}}">
+		<img ng-src="{{currentSection > 3? 'img/right.png': 'img/right-white.png'}}">
 	</span>
 	<section style="margin-left: {{'-' + currentSection + '00%'}}">
 		<div class="list">
 			<div class="header menu">
 				<div class="logo-header">
 					<a href="/">
-						<img src="img/logo-header.png">
+						<img src="img/logo-white.png">
 					</a>
 				</div>
 				<div class="nav">
@@ -22,36 +22,7 @@
 				</div>
 			</div>
 			<div class="content">
-				<div class="logo-content"><img src="img/logo-content.png"></div>
-				<h1>Кто мы?</h1>
-				<div class="text">
-					<p>Мы создаем фильмы, которые захватывают с первого кадра.<br>Мы ценим каждую секунду, знаем, как привлечь<br>внимание, остановить взгляд, врезаться в память.<br> Мы любим выхватывать мгновения у жизни,<br>чтобы рассказать о мире вокруг.</p>
-				</div>
-			</div>
-			<div class="footer">
-				<a ng-href="mailto:{{contact.mail}}">{{contact.mail}}</a><br>
-				<a ng-href="tel:{{contact.phone}}">{{contact.phone}}</a>
-			</div>
-		</div>
-	</section>
-	
-	<section>
-		<div class="list">
-			<div class="header menu">
-				<div class="logo-header">
-					<a href="/">
-						<img src="img/logo-header.png">
-					</a>
-				</div>
-				<div class="nav">
-					<ul>
-						<li class="active" ng-click="turnSection(0)">О нас</li>
-						<li ng-click="turnSection(3)">Наши работы</li>
-						<li ng-click="turnSection(totalSections)">Контакты</li>
-					</ul>
-				</div>
-			</div>
-			<div class="content">
+				<div class="logo-content"><img src="img/logo-content-white.png"></div>
 				<h1>Что мы создаем?</h1>
 				<div class="text">
 					<div class="colomn">
@@ -80,7 +51,36 @@
 			<div class="header menu">
 				<div class="logo-header">
 					<a href="/">
-						<img src="img/logo-header.png">
+						<img src="img/logo-white.png">
+					</a>
+				</div>
+				<div class="nav">
+					<ul>
+						<li class="active" ng-click="turnSection(0)">О нас</li>
+						<li ng-click="turnSection(3)">Наши работы</li>
+						<li ng-click="turnSection(totalSections)">Контакты</li>
+					</ul>
+				</div>
+			</div>
+			<div class="content">
+				<h1>Кто мы?</h1>
+				<div class="text">
+					<p>Мы создаем фильмы, которые захватывают с первого кадра.<br>Мы ценим каждую секунду, знаем, как привлечь<br>внимание, остановить взгляд, врезаться в память.<br> Мы любим выхватывать мгновения у жизни,<br>чтобы рассказать о мире вокруг.</p>
+				</div>
+			</div>
+			<div class="footer">
+				<a ng-href="mailto:{{contact.mail}}">{{contact.mail}}</a><br>
+				<a ng-href="tel:{{contact.phone}}">{{contact.phone}}</a>
+			</div>
+		</div>
+	</section>
+	
+	<section>
+		<div class="list">
+			<div class="header menu">
+				<div class="logo-header">
+					<a href="/">
+						<img src="img/logo-white.png">
 					</a>
 				</div>
 				<div class="nav">
@@ -161,7 +161,9 @@
 			<h1>Как с нами связаться</h1>
 			<div class="text">
 				<a ng-href="mailto:{{contact.mail}}">{{contact.mail}}</a><br>
-				<a ng-href="tel:{{contact.phone}}">{{contact.phone}}</a>
+				<a ng-href="tel:{{contact.phone}}">{{contact.phone}}</a><br>
+				<a href="tel:+79050564937">+7 905 056-49-37</a><br>
+				<a href="tel:+79209028177">+7 920 902-81-77</a><br>
 			</div>
 		</div>
 		<div class="footer">
