@@ -35,7 +35,10 @@
 			$event.keyCode === keys.right && $scope.turnSection(1);
 		};
 		$scope.includeVimeo = function(id) {
-			return $sce.trustAsResourceUrl("https://player.vimeo.com/video/" + id + "?title=0&byline=0&portrait=0");
+			$scope.vimeo = $sce.trustAsResourceUrl("https://player.vimeo.com/video/" + id + "?title=0&byline=0&portrait=0");
+		};
+		$scope.removeVimeo = function(id) {
+			$scope.vimeo = '';
 		};
 		$scope.turnSection = function(dir) {
 			if (dir > 1 || dir === 0) {

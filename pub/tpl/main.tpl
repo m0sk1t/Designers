@@ -5,7 +5,7 @@
 	<span id="right" ng-if="currentSection < totalSections" ng-click="turnSection(1)">
 		<img ng-src="{{currentSection<0? 'img/right.png': 'img/right-white.png'}}">
 	</span>
-	<section style="margin-left: {{'-' + currentSection + '01.1%'}}">
+	<section style="margin-left: {{'-' + currentSection + '01.5%'}}">
 		<div class="list">
 			<div class="header menu">
 				<div class="logo-header">
@@ -104,8 +104,8 @@
 		</div>
 	</section>
 	<section class="our-works" ng-repeat="v in video track by $index" ng-style="{'background-image': 'url(img/' + v.bgimage + ')'}">
-		<iframe ng-init="v.display = false" ng-show="v.display" class="full-video" ng-src="{{v.display?includeVimeo(v.fullvideo):''}}" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-		<div class="video-off" ng-if="v.display" ng-click="v.display = false"></div>
+		<iframe ng-init="v.display = false" ng-show="v.display" class="full-video" ng-src="{{vimeo}}" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		<div class="video-off" ng-show="v.display" ng-click="includeVimeo(v.fullvideo - 1); v.display = false;"></div>
 		<video autoplay loop muted class="bgvideo" ng-if="$index+3 === currentSection">
 			<source ng-src="{{'media/'+v.bgvideo}}" type="video/webm"></source>
 		</video>
@@ -130,7 +130,7 @@
 				{{v.descriptiontext}}
 			</pre>
 			<div class="play">
-				<p ng-click="v.display = true">Смотреть ролик</p>
+				<p ng-click="includeVimeo(v.fullvideo); v.display = true;">Смотреть ролик</p>
 			</div>
 		</div>
 		<div class="footer">
