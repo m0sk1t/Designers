@@ -103,7 +103,7 @@ article {
 section {
 	color: #fff;
 	position: relative;
-	display: inline-table;
+	display: inline-block;
 	transition: margin-left .7s ease 0s;
 	-webkit-transition: margin-left .7s ease 0s;
 	-moz-transition: margin-left .7s ease 0s;

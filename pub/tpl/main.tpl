@@ -5,7 +5,7 @@
 	<span id="right" ng-if="currentSection < totalSections" ng-click="turnSection(1)">
 		<img ng-src="{{currentSection<0? 'img/right.png': 'img/right-white.png'}}">
 	</span>
-	<section style="margin-left: {{'-' + currentSection + '00%'}}">
+	<section style="margin-left: {{'-' + currentSection + '01%'}}">
 		<div class="list">
 			<div class="header menu">
 				<div class="logo-header">
