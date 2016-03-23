@@ -1,10 +1,10 @@
 @font-face {
 	font-family: PTSansReg;
-	src: url(font/pt-sans.ttf);
+	src: url(fonts/pt-sans.ttf);
 }
 @font-face {
 	font-family: PTSansBold;
-	src: url(font/pt-sans-bold.ttf);
+	src: url(fonts/pt-sans-bold.ttf);
 }
 html {
 	height: 100%;
@@ -223,7 +223,7 @@ section {
 	text-transform: uppercase;
 }
 .play {
-	width: 208px;
+	width: 155px;
 	transition: background 0.4s ease-in-out;
 }
 .play p {
