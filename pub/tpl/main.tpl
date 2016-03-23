@@ -33,9 +33,7 @@
 				<a ng-href="tel:{{contact.phone}}">{{contact.phone}}</a>
 			</div>
 		</div>
-	</section>
-	
-	<section>
+	</section><section>
 		<div class="list">
 			<div class="header menu">
 				<div class="logo-header">
@@ -73,9 +71,7 @@
 				<a ng-href="tel:{{contact.phone}}">{{contact.phone}}</a>
 			</div>
 		</div>
-	</section>
-	
-	<section>
+	</section><section>
 		<div class="list">
 			<div class="header menu">
 				<div class="logo-header">
@@ -102,8 +98,7 @@
 				<a ng-href="tel:{{contact.phone}}">{{contact.phone}}</a>
 			</div>
 		</div>
-	</section>
-	<section class="our-works" ng-repeat="v in video track by $index" ng-style="{'background-image': 'url(img/' + v.bgimage + ')'}">
+	</section><section class="our-works" ng-repeat="v in video track by $index" ng-style="{'background-image': 'url(img/' + v.bgimage + ')'}">
 		<iframe ng-init="v.display = false" ng-show="v.display" class="full-video" ng-src="{{vimeo}}" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 		<div class="video-off" ng-show="v.display" ng-click="includeVimeo(v.fullvideo - 1); v.display = false;"></div>
 		<video autoplay loop muted class="bgvideo" ng-if="$index+3 === currentSection">
@@ -138,8 +133,7 @@
 				<a ng-href="tel:{{contact.phone}}">{{contact.phone}}</a>
 		</div>
 	</div>
-	</section>
-	<section id="sec7" name="contact">
+	</section><section id="sec7" name="contact">
 	<div class="list">
 		<div class="header menu">
 			<div class="logo-header">
