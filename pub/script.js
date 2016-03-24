@@ -1,5 +1,15 @@
 (function() {
 	var app = angular.module('Designers', ['ngRoute', 'angularFileUpload']);
+	app.directive("scroll", function($window) {
+		return function(scope, element, attrs) {
+			angular.element($window).bind("scroll", function(e) {
+				e.preventDefault();
+				console.log(element);
+				console.log(attrs);
+				scope.$apply();
+			});
+		};
+	});
 	app.config(function($routeProvider, $locationProvider) {
 		$routeProvider.when('/', {
 			templateUrl: 'tpl/main.tpl',
@@ -30,7 +40,9 @@
 		$scope.totalSections = 0;
 		$scope.currentSection = 0;
 		$scope.keyTurn = function($event) {
-			if (!$event) { return; }
+			if (!$event) {
+				return;
+			}
 			$event.keyCode === keys.left && $scope.turnSection(-1);
 			$event.keyCode === keys.right && $scope.turnSection(1);
 		};
