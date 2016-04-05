@@ -93,21 +93,21 @@ a {
 }
 article {
 	white-space: nowrap;
-	transition: background-position .5s ease 0s;
+	background-size: cover;
 	-webkit-transition: background-position .5s ease 0s;
 	-moz-transition: background-position .5s ease 0s;
 	-ms-transition: background-position .5s ease 0s;
 	-o-transition: background-position .5s ease 0s;
-	background-size: cover;
+	transition: background-position .5s ease 0s;
 }
 section {
 	color: #fff;
 	display: inline-block;
-	transition: margin-left .5s ease 0s;
 	-webkit-transition: margin-left .5s ease 0s;
 	-moz-transition: margin-left .5s ease 0s;
 	-ms-transition: margin-left .5s ease 0s;
 	-o-transition: margin-left .5s ease 0s;
+	transition: margin-left .5s ease 0s;
 }
 #right, #left {
 	top: 50%;
