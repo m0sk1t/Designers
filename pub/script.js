@@ -30,7 +30,9 @@
 		$scope.totalSections = 0;
 		$scope.currentSection = 0;
 		$scope.keyTurn = function($event) {
-			if (!$event) { return; }
+			if (!$event) {
+				return;
+			}
 			$event.keyCode === keys.left && $scope.turnSection(-1);
 			$event.keyCode === keys.right && $scope.turnSection(1);
 		};

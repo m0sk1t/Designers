@@ -110,19 +110,20 @@ section {
 	-o-transition: margin-left .5s ease 0s;
 }
 #right, #left {
+	top: 50%;
 	z-index: 99;
 	color: #000;
-	height: 100%;
 	font-size: 2rem;
-	padding: 22% 60px 0;
 	position: absolute;
 	cursor: pointer;
 }
 #left {
 	left: 0;
+	padding-left: 60px;
 }
 #right {
 	right: 0;
+	padding-right: 60px;
 }
 .header {
 	position: absolute;
