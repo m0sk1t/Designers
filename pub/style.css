@@ -18,8 +18,8 @@ body, article, section {
 	font-family: PTSansReg;
 }
 a {
-	text-decoration: none;
 	color: #fff;
+	text-decoration: none;
 }
 @media screen and (min-width:1920px) {
 	article {
