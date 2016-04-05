@@ -155,7 +155,7 @@
 			<h1>Как с нами связаться</h1>
 			<div class="social">
 				<a href="https://www.facebook.com/groups/opictus/"><i class="fa fa-2x fa-facebook-square">&nbsp;</i>
-				</a><a href="https://www.instagram.com/orbispictus/"><i class="fa fa-2x fa-instagram">&nbsp;</i></a>
+				</a><a href="https://www.instagram.com/orbispictus/"><i class="fa fa-2x fa-instagram">&nbsp;</i></a><a href="https://vimeo.com/orbispictus"><i class="fa fa-2x fa-vimeo-square">&nbsp;</i></a>
 			</div>
 			<div class="text">
 				<a ng-href="mailto:{{contact.mail}}">{{contact.mail}}</a><br>
