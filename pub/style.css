@@ -126,6 +126,7 @@ section {
 	padding-right: 60px;
 }
 .header {
+	top: 5%;
 	position: absolute;
 	z-index: 100;
 }
@@ -162,14 +163,11 @@ section {
 	color: #e4002b;
 	transition: all 0.4s ease-out;
 }
-.logo-content {
-/*	margin: 0 0 18px -27px;
-*/}
 .active {
 	border-bottom: 1px solid #e4002b !important;
 }
 .content {
-	padding-top: 18%;
+	margin-top: 15%;
 	min-height: 300px;
 	position: relative;
 }
@@ -192,12 +190,11 @@ section {
 	margin: 15px 0px 0px;
 }
 .footer {
-	position: absolute;
-	bottom: 0;
-	text-transform: uppercase;
 	color: #fff;
+	bottom: 30px;
+	position: absolute;
 	font-family: PTSansBold;
-	margin-bottom: 30px;
+	text-transform: uppercase;
 }
 .bgvideo {
 	z-index: 0;
