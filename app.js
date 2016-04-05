@@ -117,18 +117,19 @@ app.post('/bgvideo/:adminid/:_id', upload.single('bgvideo'), function(req, res) 
 				} else {
 				fs.rename(req.files.file.path, __dirname + '/pub/media/' + newfilename, function() {
 					ffmpeg(__dirname + '/pub/media/' + newfilename).
-					output(__dirname + '/pub/media/' + digest + '.mp4').
-					on('end',function(){
-						console.log('finished converting');
-						el.bgvideo && fs.unlink(__dirname + '/pub/media/' + el.bgvideo + '.webm');
-						el.bgvideo && fs.unlink(__dirname + '/pub/media/' + el.bgvideo + '.mp4');
-						Video.findByIdAndUpdate(req.params._id, {
-							bgvideo: digest
-						}, function(err, el) {
-							if (err) return console.error(err);
-							res.send('OK!');
-						});
-					}).run();
+						videoCodec('h264').
+						output(__dirname + '/pub/media/' + digest + '.mp4').
+						on('end', function(){
+							console.log('finished converting');
+							el.bgvideo && fs.unlink(__dirname + '/pub/media/' + el.bgvideo + '.webm');
+							el.bgvideo && fs.unlink(__dirname + '/pub/media/' + el.bgvideo + '.mp4');
+							Video.findByIdAndUpdate(req.params._id, {
+								bgvideo: digest
+							}, function(err, el) {
+								if (err) return console.error(err);
+								res.send('OK!');
+							});
+						}).run();
 					});
 				}
 			});
