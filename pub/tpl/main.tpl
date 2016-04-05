@@ -103,7 +103,6 @@
 		<div class="video-off" ng-show="v.display" ng-click="includeVimeo(v.fullvideo - 1); v.display = false;"></div>
 		<video autoplay loop muted class="bgvideo" ng-if="$index+3 === currentSection">
 			<source ng-src="{{'media/'+v.bgvideo+'.mp4'}}" type="video/mp4"></source>
-			<source ng-src="{{'media/'+v.bgvideo+'.ogv'}}" type="video/ogv"></source>
 			<source ng-src="{{'media/'+v.bgvideo+'.webm'}}" type="video/webm"></source>
 		</video>
 		<div class="list">
