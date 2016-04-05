@@ -1,4 +1,4 @@
-<article tabindex="1" style="background-position: {{(100/totalSections) * currentSection + '% 0'}}">
+<article tabindex="1" style="background-position: {{(100/2) * currentSection + '% 0'}}">
 	<span id="left" ng-if="currentSection > 0" ng-click="turnSection(-1)">
 		<img ng-src="{{currentSection<0? 'img/left.png': 'img/left-white.png'}}">
 	</span>
@@ -102,7 +102,9 @@
 		<iframe ng-init="v.display = false" ng-show="v.display" class="full-video" ng-src="{{vimeo}}" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 		<div class="video-off" ng-show="v.display" ng-click="includeVimeo(v.fullvideo - 1); v.display = false;"></div>
 		<video autoplay loop muted class="bgvideo" ng-if="$index+3 === currentSection">
-			<source ng-src="{{'media/'+v.bgvideo}}" type="video/webm"></source>
+			<source ng-src="{{'media/'+v.bgvideo+'.mp4'}}" type="video/mp4"></source>
+			<source ng-src="{{'media/'+v.bgvideo+'.ogv'}}" type="video/ogv"></source>
+			<source ng-src="{{'media/'+v.bgvideo+'.webm'}}" type="video/webm"></source>
 		</video>
 		<div class="list">
 			<div class="header menu">

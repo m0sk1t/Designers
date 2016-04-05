@@ -8,6 +8,7 @@ var fs = require('fs'),
 	upload = multer({
 		dest: 'tmp/'
 	}),
+	ffmpeg = require('fluent-ffmpeg'),
 	favicon = require('serve-favicon'),
 	adminid = require('./adminid.js')(),
 	bodyParser = require('body-parser'),
@@ -105,21 +106,31 @@ app.post('/bgvideo/:adminid/:_id', upload.single('bgvideo'), function(req, res) 
 			hash.update(d);
 		});
 		rdd.on('end', function() {
-			var newfilename = '';
+			var newfilename = '',
+				digest = hash.digest('hex');
 			rdd.close();
-			newfilename = hash.digest('hex') + '.webm';
+			newfilename = digest + '.webm';
 			console.log('Uploaded', newfilename);
-			fs.rename(req.files.file.path, __dirname + '/pub/media/' + newfilename, function() {
-				Video.findById(req.params._id, function(err, el) {
-					fs.unlink(__dirname + '/pub/media/' + el.bgvideo, function(){
+			Video.findById(req.params._id, function(err, el) {
+				if (el.bgvideo && el.bgvideo === digest) {
+					res.send('OK! Same video!');
+				} else {
+				fs.rename(req.files.file.path, __dirname + '/pub/media/' + newfilename, function() {
+					ffmpeg(__dirname + '/pub/media/' + newfilename).
+					output(__dirname + '/pub/media/' + digest + '.mp4').
+					on('end',function(){
+						console.log('finished converting');
+						el.bgvideo && fs.unlink(__dirname + '/pub/media/' + el.bgvideo + '.webm');
+						el.bgvideo && fs.unlink(__dirname + '/pub/media/' + el.bgvideo + '.mp4');
 						Video.findByIdAndUpdate(req.params._id, {
-							bgvideo: newfilename
+							bgvideo: digest
 						}, function(err, el) {
 							if (err) return console.error(err);
 							res.send('OK!');
 						});
+					}).run();
 					});
-				});
+				}
 			});
 		});
 	} else {
@@ -179,7 +190,8 @@ app.route('/video/:_id').get(function(req, res) {
 	if (adminid === req.body.hash) {
 		Video.findByIdAndRemove(req.body._id, function(err, el) {
 			fs.unlink(__dirname + '/pub/img/' + el.bgimage, function(){
-				fs.unlink(__dirname + '/pub/media/' + el.bgvideo, function(){
+				fs.unlink(__dirname + '/pub/media/' + el.bgvideo + '.webm', function(){
+					fs.unlink(__dirname + '/pub/media/' + el.bgvideo + '.mp4');
 					(!err && el) ? res.json(el) : res.status(500).json(err);
 				});
 			});

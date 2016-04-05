@@ -92,22 +92,22 @@ a {
 	}
 }
 article {
-	overflow: hidden;
 	white-space: nowrap;
-	transition: background-position .7s ease 0s;
-	-webkit-transition: background-position .7s ease 0s;
-	-moz-transition: background-position .7s ease 0s;
-	-o-transition: background-position .7s ease 0s;
+	transition: background-position .5s ease 0s;
+	-webkit-transition: background-position .5s ease 0s;
+	-moz-transition: background-position .5s ease 0s;
+	-ms-transition: background-position .5s ease 0s;
+	-o-transition: background-position .5s ease 0s;
 	background-size: cover;
 }
 section {
 	color: #fff;
-	position: relative;
 	display: inline-block;
-	transition: margin-left .7s ease 0s;
-	-webkit-transition: margin-left .7s ease 0s;
-	-moz-transition: margin-left .7s ease 0s;
-	-o-transition: margin-left .7s ease 0s;
+	transition: margin-left .5s ease 0s;
+	-webkit-transition: margin-left .5s ease 0s;
+	-moz-transition: margin-left .5s ease 0s;
+	-ms-transition: margin-left .5s ease 0s;
+	-o-transition: margin-left .5s ease 0s;
 }
 #right, #left {
 	z-index: 99;
@@ -124,9 +124,6 @@ section {
 #right {
 	right: 0;
 }
-.clear {
-	clear: both;
-}
 .header {
 	position: absolute;
 	z-index: 100;
@@ -139,12 +136,9 @@ section {
 .logo-header {
 	height: 20px;
 	float: left;
-	margin-left: -15px;
 }
 .nav {
 	float: left;
-	padding: 7px 0px 0px;
-	margin-left: -15px;
 	font-family: PTSansBold;
 	text-transform: uppercase;
 }
@@ -156,7 +150,6 @@ section {
 .nav li {
 	float: left;
 	margin: 0 6px;
-	padding-bottom: 3px;
 	border: 1px solid transparent;
 }
 .nav li:hover {
@@ -169,8 +162,8 @@ section {
 	transition: all 0.4s ease-out;
 }
 .logo-content {
-	margin: 0 0 18px -27px;
-}
+/*	margin: 0 0 18px -27px;
+*/}
 .active {
 	border-bottom: 1px solid #e4002b !important;
 }

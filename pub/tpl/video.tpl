@@ -15,7 +15,8 @@
 				<button ng-click="videoUpload.uploadAll(); loading = videoUpload.isUploading;">Загрузить</button>
 				<p>
 					<video autoplay loop muted ng-if="video.bgvideo" class="video-preview">
-						<source ng-src="{{'media/'+video.bgvideo}}" type="video/webm"></source>
+						<source ng-src="{{'media/'+video.bgvideo+'.webm'}}" type="video/webm"></source>
+						<source ng-src="{{'media/'+video.bgvideo+'.mp4'}}" type="video/mp4"></source>
 					</video>
 				</p>
 			</li>
