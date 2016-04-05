@@ -117,7 +117,6 @@ app.post('/bgvideo/:adminid/:_id', upload.single('bgvideo'), function(req, res) 
 				} else {
 				fs.rename(req.files.file.path, __dirname + '/pub/media/' + newfilename, function() {
 					ffmpeg(__dirname + '/pub/media/' + newfilename).
-						videoCodec('h264').
 						output(__dirname + '/pub/media/' + digest + '.mp4').
 						on('end', function(){
 							console.log('finished converting');
