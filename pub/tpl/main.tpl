@@ -1,4 +1,4 @@
-<article tabindex="1" style="background-position: {{(100/2) * currentSection + '% 0'}}">
+<article tabindex="1" style="background-position: {{currentSection<3 && (50 * currentSection + '% 0')}}">
 	<span id="left" ng-if="currentSection > 0" ng-click="turnSection(-1)">
 		<img ng-src="{{currentSection<0? 'img/left.png': 'img/left-white.png'}}">
 	</span>
