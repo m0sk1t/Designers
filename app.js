@@ -117,8 +117,8 @@ app.post('/bgvideo/:adminid/:_id', upload.single('bgvideo'), function(req, res) 
 				} else {
 				fs.rename(req.files.file.path, __dirname + '/pub/media/' + newfilename, function() {
 					ffmpeg(__dirname + '/pub/media/' + newfilename).
-						videoCodec('libx264').
-						output(__dirname + '/pub/media/' + digest + '.mp4').
+/*						videoCodec('libx264').
+*/						output(__dirname + '/pub/media/' + digest + '.mp4').
 						on('end', function(){
 							console.log('finished converting');
 							el.bgvideo && fs.unlink(__dirname + '/pub/media/' + el.bgvideo + '.webm');
