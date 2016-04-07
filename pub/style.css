@@ -93,6 +93,11 @@ a {
 }
 article {
 	white-space: nowrap;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
 	background-size: cover;
 	-webkit-transition: background-position .5s ease 0s;
 	-moz-transition: background-position .5s ease 0s;
@@ -102,7 +107,7 @@ article {
 }
 section {
 	color: #fff;
-	display: inline-block;
+	display: table;
 	-webkit-transition: margin-left .5s ease 0s;
 	-moz-transition: margin-left .5s ease 0s;
 	-ms-transition: margin-left .5s ease 0s;
